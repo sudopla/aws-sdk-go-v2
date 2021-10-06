@@ -18,8 +18,10 @@ var config = struct {
 		"Retries",
 		"Request",
 		"RequestWithBody",
+		"RequestEventMessage",
 		"Response",
 		"ResponseWithBody",
+		"ResponseEventMessage",
 	},
 }
 

@@ -19,8 +19,10 @@ const (
 	LogRetries
 	LogRequest
 	LogRequestWithBody
+	LogRequestEventMessage
 	LogResponse
 	LogResponseWithBody
+	LogResponseEventMessage
 )
 
 // IsSigning returns whether the Signing logging mode bit is set
@@ -43,6 +45,11 @@ func (m ClientLogMode) IsRequestWithBody() bool {
 	return m&LogRequestWithBody != 0
 }
 
+// IsRequestEventMessage returns whether the RequestEventMessage logging mode bit is set
+func (m ClientLogMode) IsRequestEventMessage() bool {
+	return m&LogRequestEventMessage != 0
+}
+
 // IsResponse returns whether the Response logging mode bit is set
 func (m ClientLogMode) IsResponse() bool {
 	return m&LogResponse != 0
@@ -51,6 +58,11 @@ func (m ClientLogMode) IsResponse() bool {
 // IsResponseWithBody returns whether the ResponseWithBody logging mode bit is set
 func (m ClientLogMode) IsResponseWithBody() bool {
 	return m&LogResponseWithBody != 0
+}
+
+// IsResponseEventMessage returns whether the ResponseEventMessage logging mode bit is set
+func (m ClientLogMode) IsResponseEventMessage() bool {
+	return m&LogResponseEventMessage != 0
 }
 
 // ClearSigning clears the Signing logging mode bit
@@ -73,6 +85,11 @@ func (m *ClientLogMode) ClearRequestWithBody() {
 	*m &^= LogRequestWithBody
 }
 
+// ClearRequestEventMessage clears the RequestEventMessage logging mode bit
+func (m *ClientLogMode) ClearRequestEventMessage() {
+	*m &^= LogRequestEventMessage
+}
+
 // ClearResponse clears the Response logging mode bit
 func (m *ClientLogMode) ClearResponse() {
 	*m &^= LogResponse
@@ -81,4 +98,9 @@ func (m *ClientLogMode) ClearResponse() {
 // ClearResponseWithBody clears the ResponseWithBody logging mode bit
 func (m *ClientLogMode) ClearResponseWithBody() {
 	*m &^= LogResponseWithBody
+}
+
+// ClearResponseEventMessage clears the ResponseEventMessage logging mode bit
+func (m *ClientLogMode) ClearResponseEventMessage() {
+	*m &^= LogResponseEventMessage
 }
